@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "requests",
+  "info": {
+    "name": "motorcycle",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "dataRealizacao": {
+      "type": "datetime"
+    },
+    "materials": {
+      "collection": "material",
+      "via": "request"
+    },
+    "admin_user": {
+      "plugin": "admin",
+      "model": "user"
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "pedido",
+        "pronto"
+      ],
+      "required": true
+    }
+  }
+}
